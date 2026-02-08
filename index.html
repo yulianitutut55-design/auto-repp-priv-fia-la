@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Auto Report WA - Multi Sender</title>
+    <style>
+        body { max-width: 800px; margin: 2rem auto; padding: 0 1rem; }
+        .section { border: 1px solid #ddd; padding: 1rem; margin: 1rem 0; border-radius: 8px; }
+        input, button, select { padding: 0.8rem; margin: 0.5rem 0; border-radius: 4px; border: 1px solid #ddd; }
+        button { background: #25D366; color: white; border: none; cursor: pointer; }
+        .delete-btn { background: #ff3333; }
+        #senderList { max-height: 200px; overflow-y: auto; }
+        .sender-item { padding: 0.5rem; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; }
+    </style>
+</head>
+<body>
+    <h1>AUTO REPORT WA - MULTI SENDER</h1>
+
+    <!-- SECTION TAMBAH SENDER -->
+    <div class="section">
+        <h2>Tambah Sender Akun WA</h2>
+        <input type="text" id="senderNumber" placeholder="Nomor Sender (dengan kode negara)">
+        <input type="text" id="senderToken" placeholder="Token Auth Sender (klaim dari layanan tidak resmi)">
+        <button onclick="addSender()">SIMPAN SENDER</button>
+    </div>
+
+    <!-- SECTION DAFTAR SENDER -->
+    <div class="section">
+        <h2>Daftar Sender Aktif</h2>
+        <div id="senderList"></div>
+    </div>
+
+    <!-- SECTION SETTING LAPORAN OTOMATIS -->
+    <div class="section">
+        <h2>Setting Otomatis Report</h2>
+        <input type="text" id="targetNumber" placeholder="Nomor Target (dengan kode negara)">
+        <input type="text" id="reportReason" placeholder="Alasan Laporan (umum untuk semua sender)">
+        <input type="number" id="intervalTime" placeholder="Interval Laporan (detik)" min="10" value="60">
+        <select id="senderSelection">
+            <option value="all">Gunakan Semua Sender</option>
+            <option value="specific">Pilih Sender Tertentu</option>
+        </select>
+        <div id="specificSenderContainer" style="display: none;">
+            <select id="specificSender"></select>
+        </div>
+        <button onclick="startAutoReport()">MULAI OTOMATIS REPORT</button>
+        <button onclick="stopAutoReport()">BERHENTIKAN</button>
+        <div id="status" style="margin-top: 1rem; font-weight: bold;"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+      </html>
+          
